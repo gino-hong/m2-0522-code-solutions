@@ -1,0 +1,29 @@
+body {
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.active {
+  display: contents;
+}
+
+.hidden {
+  display: none;
+}
+
+.fa-circle {
+  margin: 10px;
+}
