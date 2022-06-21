@@ -1,0 +1,61 @@
+    1  cd command-line-basics
+    2  man cat
+    3  cat laziness.txt impatience.txt hubris.txt
+    4  cat laziness.txt impatience.txt hubris.txt > three-virtues.txt
+    5  cat three-virues.txt
+    6  cat three-virtues.txt
+    7  man ls
+    8  ls
+    9  man ls
+   10  ls -a
+   11  ls -F
+   12  man ls
+   13  ls lfz-staff/
+   14  ls lfz-staff/ -a
+   15  ls lfz-staff/ -F
+   16  ls -aF lfz-staff > lfz-staff/contents.txt
+   17  cat lfz-staff/contexts.txt
+   18  cat lfz-staff/contents.txt
+   19  pwd
+   20  pwd > i-was-here.txt
+   21  ls
+   22  cat i-was-here.txt
+   23  man echo
+   24  echo 'Hello, World!'
+   25  echo 'Hello, World!' > hello.txt
+   26  ls
+   27  cat hello.txt
+   28  touch
+   29  man touch
+   30  touch > tag-youre-it.txt
+   31  cat tag-youre-it.txt
+   32  man touch
+   33  touch --help
+   34  touch -a > tag-youre-it.txt
+   35  man touch
+   36  touch > tag-youre-it.txt
+   37  touch snoot/ > boop.txt
+   38  touch > snoot/boop.txt
+   39  ls snoot/
+   40  mkdir 
+   41  man mkdir
+   42  mkdir -p parent
+   43  ls parent/
+   44  mkdir -p child
+   45  mkdir -p parent/child
+   46  mkdir -p parent/child/grandchild
+   47  touch > .gitkeep
+   48  touch > .gitkeep
+   49  touch > parent/child/grandchild/.gitkeep
+   50  ls -a
+   51  ls -a parent/child/grandchild
+   52  mv pokiemans pokemon
+   53  rm lol.tt
+   54  rm lol.txt
+   55  rm -r kill-me/
+   56  ls kill-me/
+   57  cp and-then.txt no-and-then.txt
+   58  cat and-then.txt
+   59  cat no-and-then.txt
+   60  history
+   61  history > command-history.txt
