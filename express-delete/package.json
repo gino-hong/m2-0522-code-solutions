@@ -1,0 +1,14 @@
+{
+  "name": "express-delete",
+  "version": "1.0.0",
+  "description": "Programming an Express server to handle DELETE requests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gino Hong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
