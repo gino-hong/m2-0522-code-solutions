@@ -1,0 +1,14 @@
+{
+  "name": "express-post-json",
+  "version": "1.0.0",
+  "description": "Programming an Express web server to receive JSON data in client request bodies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gino Hong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
