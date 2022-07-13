@@ -50,11 +50,44 @@ app.post('/api/notes', (req, res) => {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf-8', function (err) {
       if (err) {
         res.status(500).json(
-          { error: 'An unexpected error occurred.' }
+          {
+            error: 'An unexpected error occurred.'
+          }
         );
       } else {
         res.status(201).json(req.body);
       }
     });
+  }
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+  if (Number(req.params.id) < 1) {
+    res.status(400).json(
+      {
+        error: 'id must be a positive integer'
+      }
+    );
+  } else {
+    if (data.notes[req.params.id] === undefined) {
+      res.status(404).json(
+        {
+          error: `cannot find note with id ${req.params.id}`
+        }
+      );
+    } else {
+      delete data.notes[req.params.id];
+      fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf-8', function (err) {
+        if (err) {
+          res.status(500).json(
+            {
+              error: 'An unexpected error occurred.'
+            }
+          );
+        } else {
+          res.status(204).json();
+        }
+      });
+    }
   }
 });
