@@ -49,6 +49,7 @@ app.post('/api/notes', (req, res) => {
     data.nextId++;
     fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf-8', function (err) {
       if (err) {
+        console.error(err);
         res.status(500).json(
           {
             error: 'An unexpected error occurred.'
@@ -79,6 +80,7 @@ app.delete('/api/notes/:id', (req, res) => {
       delete data.notes[req.params.id];
       fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf-8', function (err) {
         if (err) {
+          console.error(err);
           res.status(500).json(
             {
               error: 'An unexpected error occurred.'
@@ -116,6 +118,7 @@ app.put('/api/notes/:id', (req, res) => {
       data.notes[req.params.id].content = req.body.content;
       fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf-8', function (err) {
         if (err) {
+          console.error(err);
           res.status(500).json(
             {
               error: 'An unexpected error occurred.'
