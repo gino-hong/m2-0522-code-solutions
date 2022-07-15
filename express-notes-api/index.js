@@ -122,7 +122,7 @@ app.put('/api/notes/:id', (req, res) => {
             }
           );
         } else {
-          res.status(200).json(data.notes[req.params.id]);
+          res.json(data.notes[req.params.id]);
         }
       });
     }
