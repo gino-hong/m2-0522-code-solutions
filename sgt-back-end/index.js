@@ -70,3 +70,47 @@ app.post('/api/grades', (req, res) => {
       });
   }
 });
+
+app.put('/api/grades/:gradeId', (req, res) => {
+  const gradeId = Number(req.params.gradeId);
+  if (gradeId < 1 || !Number.isInteger(gradeId)) {
+    res.status(400).json({
+      error: 'gradeId must be a positive integer.'
+    });
+  } else if (req.body.name === undefined || req.body.course === undefined || req.body.score === undefined) {
+    res.status(400).json({
+      error: 'Missing name, course, or score'
+    });
+  } else if (req.body.score < 0 || req.body.score > 100) {
+    res.status(400).json({
+      error: 'Score must be an integer from 0 to 100.'
+    });
+  } else {
+    const sql = `
+    update "grades"
+      set "name" = $2,
+          "course" = $3,
+          "score" = $4
+    where "gradeId" = $1
+    returning *
+    `;
+    const params = [gradeId, req.body.name, req.body.course, req.body.score];
+    db.query(sql, params)
+      .then(result => {
+        const grade = result.rows[0];
+        if (!grade) {
+          res.status(404).json({
+            error: `Cannot find grade with "gradeId" ${gradeId}`
+          });
+        } else {
+          res.status(200).json(grade);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({
+          error: 'An unexpected error occured.'
+        });
+      });
+  }
+});
