@@ -100,10 +100,43 @@ app.put('/api/grades/:gradeId', (req, res) => {
         const grade = result.rows[0];
         if (!grade) {
           res.status(404).json({
-            error: `Cannot find grade with "gradeId" ${gradeId}`
+            error: `Cannot find grade with gradeId ${gradeId}`
           });
         } else {
           res.status(200).json(grade);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({
+          error: 'An unexpected error occured.'
+        });
+      });
+  }
+});
+
+app.delete('/api/grades/:gradeId', (req, res) => {
+  const gradeId = Number(req.params.gradeId);
+  if (gradeId < 1 || !Number.isInteger(gradeId)) {
+    res.status(400).json({
+      error: 'gradeId must be a positive integer.'
+    });
+  } else {
+    const sql = `
+    delete from "grades"
+    where "gradeId" = $1
+    returning *
+    `;
+    const params = [gradeId];
+    db.query(sql, params)
+      .then(result => {
+        const grade = result.rows[0];
+        if (!grade) {
+          res.status(404).json({
+            error: `Cannot find grade with "gradeId" ${gradeId}`
+          });
+        } else {
+          res.status(204).json(grade);
         }
       })
       .catch(err => {
