@@ -46,7 +46,7 @@ app.post('/api/grades', (req, res) => {
     res.status(400).json({
       error: 'Missing name, course, or score'
     });
-  } else if (req.body.score < 0 || req.body.score > 100) {
+  } else if (req.body.score < 0 || req.body.score > 100 || !Number.isInteger(req.body.score)) {
     res.status(400).json({
       error: 'Score must be an integer from 0 to 100.'
     });
@@ -81,7 +81,7 @@ app.put('/api/grades/:gradeId', (req, res) => {
     res.status(400).json({
       error: 'Missing name, course, or score'
     });
-  } else if (req.body.score < 0 || req.body.score > 100) {
+  } else if (req.body.score < 0 || req.body.score > 100 || !Number.isInteger(req.body.score)) {
     res.status(400).json({
       error: 'Score must be an integer from 0 to 100.'
     });
